@@ -4,7 +4,7 @@ import { createServer } from "http";
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: "https://your-vercel-app.vercel.app",
     methods: ["GET", "POST"],
   },
 });
@@ -28,5 +28,5 @@ io.on("connection", (socket) => {
 });
 
 httpServer.listen(4000, () => {
-  console.log("Socket.IO server running on http://localhost:4000");
+  console.log("Socket.IO server runnung");
 });
