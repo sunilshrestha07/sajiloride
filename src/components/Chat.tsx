@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import socket from "../lib/socket";
 
+
 const Chat = () => {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState("");
