@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Chat from '@/components/Chat';
 
 interface LocationInfo {
   address_line1: string;
@@ -20,8 +19,14 @@ export default function Page() {
   const [coordinates, setCoordinates] = useState([]);
 
   const getAllUsers = async () => {
-    const { data } = await axios.get('/api/user/getallusers');
-    setAllUsers(data.users);
+    const response = await fetch('https://cors-anywhere.herokuapp.com/https://fashion-fusion-suneel.vercel.app/api/dress', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data);
   };
   const getalllocation = async () => {
     const response = await axios.get(
@@ -110,7 +115,7 @@ export default function Page() {
       <div>
         <button onClick={handleCaptainSignup}>captain login</button>
       </div>
-      {/* <div className="">
+      <div className="">
       <ul>
         {locationInfo.map((location, index) => (
           <li
@@ -127,9 +132,6 @@ export default function Page() {
           </li>
         ))}
       </ul>
-      </div> */}
-      <div className="">
-        <Chat/>
       </div>
     </div>
   );
