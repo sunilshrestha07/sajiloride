@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'user',
   },
+  pohone:{
+    type: String,
+  }
 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
