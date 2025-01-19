@@ -18,14 +18,39 @@ const userSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
+    default:'https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png',
   },
   role: {
     type: String,
     default: 'user',
   },
-  pohone:{
+  location: {
+    latitude: {
+      type: Number,
+    },
+    longitude: {
+      type: Number,
+    },
+  },
+  phone: {
     type: String,
-  }
+  },
+  vehicle: {
+    color: {
+      type: String,
+      required: true,
+      minlength: [3, 'Color must be at least 3 characters long'],
+    },
+    plate: {
+      type: String,
+      required: true,
+      minlength: [3, 'Plate must be at least 3 characters long'],
+    },
+    vehicleType: {
+      type: String,
+      required: true,
+    },
+  },
 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);

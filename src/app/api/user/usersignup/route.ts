@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   try {
     dbConnect();
     try {
-      const { name, email, password,phone } = await request.json();
+      const { name, email, password,phone ,role,vehicle} = await request.json();
 
       //show error if any field is empty
       if (!name || !email || !password || !phone) {
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       const hashedpassword = bcrypt.hashSync(password, 10);
 
       //save the user to the database
-      const newUser = new User({ name, email, password:hashedpassword ,phone});
+      const newUser = new User({ name, email, password:hashedpassword ,phone,role,vehicle});
       await newUser.save();
 
       //if user is saved successfully, return success message
