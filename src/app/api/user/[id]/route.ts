@@ -15,7 +15,7 @@ export async function PUT(request: Request, { params }: {params :Promise<{ id: s
       );
     }
 
-    const { name, email, password, avatar } = await request.json();
+    const { name, email, password, avatar,phone,vehicle } = await request.json();
 
     const updatedUser = await User.findByIdAndUpdate(
       _id,
@@ -25,6 +25,8 @@ export async function PUT(request: Request, { params }: {params :Promise<{ id: s
           email,
           password,
           avatar,
+          phone,
+          vehicle
         },
       },
       { new: true } // This option returns the updated document
